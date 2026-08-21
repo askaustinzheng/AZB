@@ -4,9 +4,17 @@
         <servlet-name>SessionServlet</servlet-name>
         <servlet-class>azb.control.SessionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>azb.control.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SessionServlet</servlet-name>
         <url-pattern>/SessionServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
