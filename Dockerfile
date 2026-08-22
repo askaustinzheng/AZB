@@ -1,8 +1,10 @@
-# 1. Official GlassFish-compatible runtime (Java 8 EE 7/8 support)
+# Stage 1: Build
+FROM maven:3.8-openjdk-8 as builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime
 FROM payara/server-full:5.2022.5
-
-# 2. Deploy your NetBeans war file as the root web app
-COPY dist/Bank.war $DEPLOY_DIR/ROOT.war
-
-# 3. Expose port 8080
+COPY --from=builder /app/target/Bank.war $DEPLOY_DIR/ROOT.war
 EXPOSE 8080
